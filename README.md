@@ -2,7 +2,7 @@
 
 > A modified **Self-RAG** chatbot that decides *when* to retrieve, checks its own answers for **groundedness** and **usefulness**, revises them when they drift from the sources, and escalates to **web search** only when local context is weak.
 
-[**Live Demo**](<ADD-YOUR-STREAMLIT-APP-URL>) · [**GitHub**](https://github.com/Aryan-0-1/RAGnarok-Adaptive-Self-RAG-ChatBot)
+[**Live Demo**](https://adaptive-self-rag-chatbot-1.streamlit.app/) · [**GitHub**](https://github.com/Aryan-0-1/RAGnarok-Adaptive-Self-RAG-ChatBot)
 
 ![Python](https://img.shields.io/badge/Python-3.10%2B-blue)
 ![LangGraph](https://img.shields.io/badge/LangGraph-state%20machine-1f6feb)
@@ -257,16 +257,6 @@ streamlit run frontend_self_rag.py
 - **Cheapest fallback first.** Local rewrites are free, so they run before paid web search, which is capped at one call per question.
 - **Fail honestly.** Returning "No answer found." is preferred over a confident wrong answer.
 
----
-
-## Known limitations and roadmap
-
-- [ ] **Automated evaluation.** Add faithfulness and relevance metrics (for example RAGAS) on a small QA set to quantify the gains over a standard RAG baseline.
-- [ ] **Batched relevance grading.** `is_relevant` currently makes one LLM call per chunk, so batching or a reranker would reduce latency and cost.
-- [ ] **Persistent vector index.** FAISS is in-memory and rebuilt each session, so only chat history persists.
-- [ ] **Fluent revisions.** Quote-only revision guarantees grounding but produces terse answers, and a constrained paraphrase step could improve readability.
-- [ ] **Inline citations.** Attach per-claim source references to final answers.
-- [ ] **Hybrid retrieval.** Combine BM25 with dense search to improve recall on exact-match queries.
 
 ---
 
